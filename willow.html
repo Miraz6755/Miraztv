@@ -1,0 +1,50 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ms Sports Player</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.2/shaka-player.compiled.js"></script>
+</head>
+<body style="background:#000; color:#fff; text-align:center; padding:20px;">
+  <h2>Wellcome To willow Player</h2>
+  <video id="video" width="640" height="360" controls autoplay></video>
+
+  <script>
+    async function initApp() {
+      shaka.polyfill.installAll();
+
+      if (!shaka.Player.isBrowserSupported()) {
+        console.error('Browser not supported!');
+        return;
+      }
+
+      const video = document.getElementById('video');
+      const player = new shaka.Player(video);
+
+      // Error handler
+      player.addEventListener('error', (e) => console.error('Error', e.detail));
+
+      // Configure DRM ClearKey
+      player.configure({
+        drm: {
+          clearKeys: {
+            "1779C27B9D077A3BA0C9CC1BB9A94B9F": "CC5CF3B7928FB9E0A1EE6A8B566F0A8E"
+          }
+        }
+      });
+
+      try {
+        await player.load("https://a170aivottlinear-a.akamaihd.net:443/OTTB/bom-nitro/live/dash/enc/f60kqesunw/out/v1/a435ed7a00f947deb4369b46d8f2fb70/cenc.mpd");
+        console.log("The video has now been loaded!");
+      } catch (err) {
+        console.error("Error loading video", err);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
+
