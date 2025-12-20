@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Drimlight Movie Video</title>
-
-    <!-- JW Player Library -->
-    <script src="https://cdn.jwplayer.com/libraries/YOUR_JWPLAYER_KEY.js"></script>
-
+    <title>Drimlight Movie</title>
     <style>
         body {
             margin: 0;
@@ -16,35 +12,28 @@
             align-items: center;
             height: 100vh;
         }
-
-        #player {
+        .video-container {
             width: 100%;
             max-width: 900px;
             aspect-ratio: 16 / 9;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
 <body>
 
-<div id="player"></div>
-
-<script>
-    jwplayer("player").setup({
-        file: "https://drive.google.com/file/d/1R17qWuq3E79rCtNxf2gi9bO43g9W714w/preview",
-        width: "100%",
-        aspectratio: "16:9",
-        autostart: false,
-
-        logo: {
-            file: "https://watch.movied.link/wp-content/uploads/2024/11/logo.png",   // 🔴 এখানে logo URL
-            link: "https://your-site.com",
-            position: "top-right"
-        },
-
-        title: "Drimlight Movie",     // 🔴 এখানে নাম বসাও
-        description: "Powered by JW Player"
-    });
-</script>
+<div class="video-container">
+    <iframe 
+        src="https://drive.google.com/file/d/1R17qWuq3E79rCtNxf2gi9bO43g9W714w/preview"
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+    </iframe>
+</div>
 
 </body>
 </html>
+
